@@ -7,9 +7,11 @@ import { InfluencerAttributes, InfluencerInstance } from "./interfaces/influence
 export default function (sequelize: Sequelize, dataTypes: DataTypes):
   SequelizeStatic.Model<InfluencerInstance, InfluencerAttributes> {
   let Influencer = sequelize.define<InfluencerInstance, InfluencerAttributes>("Influencer", {
-    name: { type: dataTypes.STRING, allowNull: false, primaryKey: true },
+    id: { type: dataTypes.INTEGER, allowNull: false, primaryKey: true  },
+    name: { type: dataTypes.STRING, allowNull: false },
     lastName: { type: dataTypes.TEXT, allowNull: true },
     gender: { type: dataTypes.TEXT, allowNull: true }
+    // deletionDate: { type: dataTypes.DATE, allowNull: true }
   }, {
       indexes: [],
       classMethods: {},

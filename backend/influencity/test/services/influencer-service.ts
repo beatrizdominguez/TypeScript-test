@@ -9,8 +9,11 @@ const delay = 500;
 
 describe("InfluencerService", () => {
   const influencerAttributes = {
+    id: 1,
     name: "influencer1",
-    description: "Description of influencer1."
+    lastName: "LastName of influencer1.",
+    gender: "f"
+    // deletionDate: null
   };
 
   describe("#createInfluencer", () => {
@@ -31,7 +34,8 @@ describe("InfluencerService", () => {
     it("should create a influencer in the database correctly", () => {
       influencerService.createInfluencer(influencerAttributes).then((influencer: InfluencerInstance) => {
         expect(influencer.dataValues.name).to.equals(influencerAttributes.name);
-        expect(influencer.dataValues.description).to.equals(influencerAttributes.description);
+        expect(influencer.dataValues.lastName).to.equals(influencerAttributes.lastName);
+        expect(influencer.dataValues.gender).to.equals(influencerAttributes.gender);
       }).catch((error: Error) => {
         throw error;
       });
@@ -58,9 +62,11 @@ describe("InfluencerService", () => {
     });
 
     it("should retrieve a influencer from the database correctly", () => {
-      influencerService.getInfluencer(influencerAttributes.name).then((influencer: InfluencerInstance) => {
+      influencerService.getInfluencer(influencerAttributes.id).then((influencer: InfluencerInstance) => {
+        expect(influencer.dataValues.id).to.equals(influencerAttributes.id);
         expect(influencer.dataValues.name).to.equals(influencerAttributes.name);
-        expect(influencer.dataValues.description).to.equals(influencerAttributes.description);
+        expect(influencer.dataValues.lastName).to.equals(influencerAttributes.lastName);
+        expect(influencer.dataValues.gender).to.equals(influencerAttributes.gender);
       }).catch((error: Error) => {
         throw error;
       });
@@ -94,12 +100,14 @@ describe("InfluencerService", () => {
 
     it("should update the influencer attribute(s) correctly", () => {
       let updateAttributes = {
-        description: "Update description of influencer1."
+        lastName: "Update lastName of influencer1."
       };
-      influencerService.updateInfluencer(influencerAttributes.name, updateAttributes).then(() => {
-        influencerService.getInfluencer(influencerAttributes.name).then((influencer: InfluencerInstance) => {
+      influencerService.updateInfluencer(influencerAttributes.id, updateAttributes).then(() => {
+        influencerService.getInfluencer(influencerAttributes.id).then((influencer: InfluencerInstance) => {
+          expect(influencer.dataValues.id).to.equals(influencerAttributes.id);
           expect(influencer.dataValues.name).to.equals(influencerAttributes.name);
-          expect(influencer.dataValues.description).to.equals(updateAttributes.description);
+          expect(influencer.dataValues.lastName).to.equals(updateAttributes.lastName);
+          expect(influencer.dataValues.gender).to.equals(influencerAttributes.gender);
         }).catch((error: Error) => {
           throw error;
         });
@@ -129,8 +137,8 @@ describe("InfluencerService", () => {
     });
 
     it("should delete the influencer from the database correctly", () => {
-      influencerService.deleteInfluencer(influencerAttributes.name).then(() => {
-        influencerService.getInfluencer(influencerAttributes.name).then((influencer: InfluencerInstance) => {
+      influencerService.deleteInfluencer(influencerAttributes.id).then(() => {
+        influencerService.getInfluencer(influencerAttributes.id).then((influencer: InfluencerInstance) => {
           expect(influencer).to.be.null;
         }).catch((error: Error) => {
           throw error;

@@ -12,8 +12,8 @@ router.post("/", (req: Request, res: Response) => {
   });
 });
 
-router.get("/:name", (req: Request, res: Response) => {
-  influencerService.getInfluencer(req.params.name).then((influencer: InfluencerInstance) => {
+router.get("/:id", (req: Request, res: Response) => {
+  influencerService.getInfluencer(req.params.id).then((influencer: InfluencerInstance) => {
     if (influencer) {
       return res.send(influencer);
     } else {
@@ -32,16 +32,16 @@ router.get("/", (req: Request, res: Response) => {
   });
 });
 
-router.post("/:name", (req: Request, res: Response) => {
-  influencerService.updateInfluencer(req.params.name, req.body).then(() => {
+router.post("/:id", (req: Request, res: Response) => {
+  influencerService.updateInfluencer(req.params.id, req.body).then(() => {
     return res.sendStatus(200);
   }).catch((error: Error) => {
     return res.status(409).send(error);
   });
 });
 
-router.delete("/:name", (req: Request, res: Response) => {
-  influencerService.deleteInfluencer(req.params.name).then(() => {
+router.delete("/:id", (req: Request, res: Response) => {
+  influencerService.deleteInfluencer(req.params.id).then(() => {
     return res.sendStatus(200);
   }).catch((error: Error) => {
     return res.status(500).send(error);

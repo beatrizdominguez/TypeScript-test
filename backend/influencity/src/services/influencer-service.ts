@@ -8,7 +8,7 @@ export class InfluencerService {
     let promise = new Promise<InfluencerInstance>((resolve: Function, reject: Function) => {
       sequelize.transaction((t: Transaction) => {
         return models.Influencer.create(influencerAttributes).then((influencer: InfluencerInstance) => {
-          logger.info(`Created influencer with name ${influencerAttributes.name}.`);
+          logger.info(`Created influencer with id ${influencerAttributes.id}.`);
           resolve(influencer);
         }).catch((error: Error) => {
           logger.error(error.message);
@@ -20,14 +20,14 @@ export class InfluencerService {
     return promise;
   }
 
-  getInfluencer(name: string): Promise<InfluencerInstance> {
+  getInfluencer(id: number): Promise<InfluencerInstance> {
     let promise = new Promise<InfluencerInstance>((resolve: Function, reject: Function) => {
       sequelize.transaction((t: Transaction) => {
-        return models.Influencer.findOne({where: {name: name}}).then((influencer: InfluencerInstance) => {
+        return models.Influencer.findOne({where: {id: id}}).then((influencer: InfluencerInstance) => {
           if (influencer) {
-            logger.info(`Retrieved influencer with name ${name}.`);
+            logger.info(`Retrieved influencer with id ${id}.`);
           } else {
-            logger.info(`Influencer with name ${name} does not exist.`);
+            logger.info(`Influencer with id ${id} does not exist.`);
           }
           resolve(influencer);
         }).catch((error: Error) => {
@@ -56,15 +56,15 @@ export class InfluencerService {
     return promise;
   }
 
-  updateInfluencer(name: string, influencerAttributes: any): Promise<void> {
+  updateInfluencer(id: number, influencerAttributes: any): Promise<void> {
     let promise = new Promise<void>((resolve: Function, reject: Function) => {
       sequelize.transaction((t: Transaction) => {
-        return models.Influencer.update(influencerAttributes, {where: {name: name}})
+        return models.Influencer.update(influencerAttributes, {where: {id: id}})
           .then((results: [number, Array<InfluencerInstance>]) => {
           if (results.length > 0) {
-            logger.info(`Updated influencer with name ${name}.`);
+            logger.info(`Updated influencer with id ${id}.`);
           } else {
-            logger.info(`Influencer with name ${name} does not exist.`);
+            logger.info(`Influencer with id ${id} does not exist.`);
           }
           resolve(null);
         }).catch((error: Error) => {
@@ -77,14 +77,14 @@ export class InfluencerService {
     return promise;
   }
 
-  deleteInfluencer(name: string): Promise<void> {
+  deleteInfluencer(id: number): Promise<void> {
     let promise = new Promise<void>((resolve: Function, reject: Function) => {
       sequelize.transaction((t: Transaction) => {
-        return models.Influencer.destroy({where: {name: name}}).then((afffectedRows: number) => {
+        return models.Influencer.destroy({where: {id: id}}).then((afffectedRows: number) => {
           if (afffectedRows > 0) {
-            logger.info(`Deleted influencer with name ${name}`);
+            logger.info(`Deleted influencer with id ${id}`);
           } else {
-            logger.info(`Influencer with name ${name} does not exist.`);
+            logger.info(`Influencer with id ${id} does not exist.`);
           }
           resolve(null);
         }).catch((error: Error) => {

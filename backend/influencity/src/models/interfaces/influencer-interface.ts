@@ -1,8 +1,11 @@
 import {Instance} from "sequelize";
 
 export interface InfluencerAttributes {
+  id: number;
   name: string;
-  description: string;
+  lastName: string;
+  gender: string;
+  // deletionDate: Date;
 }
 
 export interface InfluencerInstance extends Instance<InfluencerAttributes> {
