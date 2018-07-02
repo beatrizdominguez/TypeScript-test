@@ -58,7 +58,7 @@ describe("InfluencerService", () => {
     });
 
     it("should retrieve a influencer from the database correctly", () => {
-      influencerService.retrieveInfluencer(influencerAttributes.name).then((influencer: InfluencerInstance) => {
+      influencerService.getInfluencer(influencerAttributes.name).then((influencer: InfluencerInstance) => {
         expect(influencer.dataValues.name).to.equals(influencerAttributes.name);
         expect(influencer.dataValues.description).to.equals(influencerAttributes.description);
       }).catch((error: Error) => {
@@ -67,7 +67,7 @@ describe("InfluencerService", () => {
     });
 
     it("should retrieve the correct number of influencers", () => {
-      influencerService.retrieveInfluencers().then((influencers: Array<InfluencerInstance>) => {
+      influencerService.listInfluencers().then((influencers: Array<InfluencerInstance>) => {
         expect(influencers.length).to.equals(1);
       });
     });
@@ -97,7 +97,7 @@ describe("InfluencerService", () => {
         description: "Update description of influencer1."
       };
       influencerService.updateInfluencer(influencerAttributes.name, updateAttributes).then(() => {
-        influencerService.retrieveInfluencer(influencerAttributes.name).then((influencer: InfluencerInstance) => {
+        influencerService.getInfluencer(influencerAttributes.name).then((influencer: InfluencerInstance) => {
           expect(influencer.dataValues.name).to.equals(influencerAttributes.name);
           expect(influencer.dataValues.description).to.equals(updateAttributes.description);
         }).catch((error: Error) => {
@@ -130,7 +130,7 @@ describe("InfluencerService", () => {
 
     it("should delete the influencer from the database correctly", () => {
       influencerService.deleteInfluencer(influencerAttributes.name).then(() => {
-        influencerService.retrieveInfluencer(influencerAttributes.name).then((influencer: InfluencerInstance) => {
+        influencerService.getInfluencer(influencerAttributes.name).then((influencer: InfluencerInstance) => {
           expect(influencer).to.be.null;
         }).catch((error: Error) => {
           throw error;

@@ -20,7 +20,7 @@ export class InfluencerService {
     return promise;
   }
 
-  retrieveInfluencer(name: string): Promise<InfluencerInstance> {
+  getInfluencer(name: string): Promise<InfluencerInstance> {
     let promise = new Promise<InfluencerInstance>((resolve: Function, reject: Function) => {
       sequelize.transaction((t: Transaction) => {
         return models.Influencer.findOne({where: {name: name}}).then((influencer: InfluencerInstance) => {
@@ -40,7 +40,7 @@ export class InfluencerService {
     return promise;
   }
 
-  retrieveInfluencers(): Promise<Array<InfluencerInstance>> {
+  listInfluencers(): Promise<Array<InfluencerInstance>> {
     let promise = new Promise<Array<InfluencerInstance>>((resolve: Function, reject: Function) => {
       sequelize.transaction((t: Transaction) => {
         return models.Influencer.findAll().then((influencers: Array<InfluencerInstance>) => {

@@ -13,7 +13,7 @@ router.post("/", (req: Request, res: Response) => {
 });
 
 router.get("/:name", (req: Request, res: Response) => {
-  influencerService.retrieveInfluencer(req.params.name).then((influencer: InfluencerInstance) => {
+  influencerService.getInfluencer(req.params.name).then((influencer: InfluencerInstance) => {
     if (influencer) {
       return res.send(influencer);
     } else {
@@ -25,7 +25,7 @@ router.get("/:name", (req: Request, res: Response) => {
 });
 
 router.get("/", (req: Request, res: Response) => {
-  influencerService.retrieveInfluencers().then((influencer: Array<InfluencerInstance>) => {
+  influencerService.listInfluencers().then((influencer: Array<InfluencerInstance>) => {
     return res.send(influencer);
   }).catch((error: Error) => {
     return res.status(500).send(error);
