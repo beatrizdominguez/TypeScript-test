@@ -1,0 +1,18 @@
+// Variables
+@import "../../styles/variables";
+
+.header{
+    margin-bottom: 10px;
+    min-height: $header-heigth;
+    background-color: $primary-color;
+}
+.logo{
+    min-height: $header-heigth;
+   //background-image: url(../../assets/images/logo.svg);
+    background-repeat: no-repeat;
+    margin: auto;
+    width: 20%;
+    .white{
+        fill: white;
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "id": 1,
+    "name": "Cindy",
+    "lastName": "Kimberly",
+    "gender": "m",
+    "instagram": {
+        "name": "Instagram",
+        "profileUrl": "@wolfiecindyInstagram",
+        "photoProfile": "isntagram.png",
+        "followers": "100",
+        "totalPosts": "200"
+    },
+    "twitter": {
+        "name": "Twitter",
+        "profileUrl": "@wolfiecindyTwitter",
+        "photoProfile": "twitter.png",
+        "followers": "150",
+        "totalPosts": "205"
+    },
+    "youtube": {
+        "name": "YouTube",
+        "profileUrl": "@wolfiecindyYoutube",
+        "photoProfile": "youtube.png",
+        "followers": "170",
+        "totalPosts": "270"
+    }
+}

@@ -1,0 +1,26 @@
+.content {
+    height: 400px;
+    .info {
+        height: 100%;
+        background-size: cover; // background-image: url(../../assets/images/influencer_header.png)
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        h1 {
+            font-size: 4em;
+            margin-top: 0px;
+            margin-bottom: 0px; 
+             padding: 15px;
+        }
+        h2 {
+            font-size: 2em; padding-left: 15px;
+        }
+        .action-buttons {
+            padding-left: 15px;
+        }
+    }
+    .social-media {
+        margin: auto;
+        width: 61%;
+    }
+}

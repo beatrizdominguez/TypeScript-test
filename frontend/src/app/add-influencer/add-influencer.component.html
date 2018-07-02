@@ -1,0 +1,53 @@
+<app-header>
+</app-header>
+<div class="content">
+ <app-main-menu-button></app-main-menu-button>
+  <div class="form">
+    <div class="col-md-6">
+      <h2 class="text-center">Add Influencer</h2>
+      <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+        <div class="form-container">
+
+          <!-- NAME -->
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Name" formControlName="name" [errorStateMatcher]="matcher">
+            <mat-error>
+              <span *ngIf="!addForm.get('name').valid && addForm.get('name').touched">Please enter name</span>
+            </mat-error>
+          </mat-form-field>
+
+          <!-- LAST NAME -->
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Last name" formControlName="lastName" [errorStateMatcher]="matcher">
+            <mat-error>
+              <span *ngIf="!addForm.get('lastName').valid && addForm.get('lastName').touched">Please enter last name</span>
+            </mat-error>
+          </mat-form-field>
+          <!-- GENDER -->
+          <mat-form-field>
+            <mat-select placeholder="Gender" name="gender">
+              <mat-option value="f"> She</mat-option>
+              <mat-option value="m"> He</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <!-- INSTAGRAM -->
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Instagram" formControlName="instagram" [errorStateMatcher]="matcher">
+          </mat-form-field>
+
+          <!-- TWITTER -->
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Twitter" formControlName="twitter" [errorStateMatcher]="matcher">
+          </mat-form-field>
+
+          <!-- YOUTUBE -->
+          <mat-form-field class="full-width">
+            <input matInput placeholder="YouTube" formControlName="youtube" [errorStateMatcher]="matcher">
+          </mat-form-field>
+
+          <button type="submit" mat-raised-button color="primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

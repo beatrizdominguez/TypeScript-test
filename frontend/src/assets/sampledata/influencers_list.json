@@ -1,0 +1,52 @@
+{
+    "influencers": [
+        {
+            "id": 1,
+            "name": "Cindy",
+            "lastName": "Kimberly",
+            "gender": "f",
+            "instagram": {
+                "profileUrl": "@wolfiecindy",
+                "photoProfile": "",
+                "followers": "",
+                "totalPosts": ""
+            },
+            "twitter": {
+                "profileUrl ": "@wolfiecindy",
+                "photoProfile": "",
+                "followers": "",
+                "totalPosts": ""
+            },
+            "youtube": {
+                "profileUrl": "@wolfiecindy",
+                "photoProfile": "",
+                "followers": "",
+                "totalPosts": ""
+            }
+        },
+        {
+            "id": 2,
+            "name": "Cristina",
+            "lastName": "Pedroche",
+            "gender": "m",
+            "instagram": {
+                "profileUrl": "@cristipedroche",
+                "photoProfile": "",
+                "followers": "",
+                "totalPosts": ""
+            },
+            "twitter": {
+                "profileUrl ": "@cristipedroche",
+                "photoProfile": "",
+                "followers": "",
+                "totalPosts": ""
+            },
+            "youtube": {
+                "profileUrl": "@cristipedroche",
+                "photoProfile": "",
+                "followers": "",
+                "totalPosts": ""
+            }
+        }
+    ]
+}

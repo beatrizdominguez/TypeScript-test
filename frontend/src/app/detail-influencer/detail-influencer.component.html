@@ -1,0 +1,23 @@
+<app-header>
+</app-header>
+<div class="content">
+  <app-main-menu-button></app-main-menu-button>
+  <div class="content">
+    <!-- <div class="info"> -->
+    <div class="info" [ngStyle]="{'background-image': 'url(assets/images/avatar_' + influencer.gender + '.png)'}">
+      <h1>{{influencer.name}}</h1>
+      <h2>{{influencer.lastName}}</h2>
+      <div class="action-buttons">
+        <app-edit-button [id]="influencer.id"></app-edit-button>
+        <app-delete-button [id]="influencer.id"></app-delete-button>
+        <app-detail-button [id]="influencer.id"></app-detail-button>
+      </div>
+    </div>
+    <div class="social-media">
+      <app-media-card ng-if="influencer.instagram" [info]="influencer.instagram">Instagram</app-media-card>
+      <app-media-card ng-if="influencer.twitter" [info]="influencer.twitter">Twitter</app-media-card>
+      <app-media-card ng-if="influencer.youtube" [info]="influencer.youtube">Youtube</app-media-card>
+      <!-- card -->
+    </div>
+  </div>
+</div>
