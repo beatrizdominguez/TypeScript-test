@@ -17,14 +17,14 @@ npm install
 
 Run the project example you want:
 ```
-npm start -- --example="sequelize-express"
+npm start -- --example="influencity"
 ```
 
 The above command will run the example from `build/sequelize-express`.
 
 Perform CRUD operations to test it. To get a list of products, for example, run:
 ```
-curl -X GET http://localhost:3000/api/products
+curl -X GET http://localhost:3000/api/influencers
 ```
 
 For simplicity, the `configs` are shared between different example projects.
