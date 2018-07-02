@@ -1,7 +1,7 @@
 <app-header></app-header>
 <div class="content">
   <button mat-raised-button color="primary" (click)="addInfluencer()">Add New</button>
-  <div class="list" *ngFor="let influencer of influencerList.influencers;">
+  <div class="list" *ngFor="let influencer of influencerList;">
     <app-influencer [influencer]="influencer"></app-influencer>
   </div>
 </div>

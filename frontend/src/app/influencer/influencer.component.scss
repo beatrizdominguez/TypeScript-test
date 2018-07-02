@@ -1,8 +1,23 @@
-.example-card {
+// Variables
+@import "../../styles/variables";
+
+.influencer-card {
     //max-width: 400px;
+    background-size: cover;
+    width: 250px;
+    float: left;
+    /* padding: 1px; */
+    margin: 5px;
   }
   
-  .example-header-image {
+  .influencer-header-image {
    // background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
     background-size: cover;
+  }
+
+  .mat-card-header{
+    background-color: $contrast-color;
+    opacity: 0.8;
+    background-size: contain;
+    background-repeat: no-repeat;
   }

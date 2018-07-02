@@ -25,7 +25,6 @@ export class EditInfluencerComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       this.id = +params['id'];
       console.log('WE HAVE THIS ID :: ' + this.id);
-
     });
 
     // form params

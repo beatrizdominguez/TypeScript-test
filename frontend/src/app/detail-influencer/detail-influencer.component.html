@@ -14,9 +14,9 @@
       </div>
     </div>
     <div class="social-media">
-      <app-media-card ng-if="influencer.instagram" [info]="influencer.instagram">Instagram</app-media-card>
-      <app-media-card ng-if="influencer.twitter" [info]="influencer.twitter">Twitter</app-media-card>
-      <app-media-card ng-if="influencer.youtube" [info]="influencer.youtube">Youtube</app-media-card>
+      <app-media-card *ngIf="influencer.instagram" [info]="influencer.instagram">Instagram</app-media-card>
+      <app-media-card *ngIf="influencer.twitter" [info]="influencer.twitter">Twitter</app-media-card>
+      <app-media-card *ngIf="influencer.youtube" [info]="influencer.youtube">Youtube</app-media-card>
       <!-- card -->
     </div>
   </div>

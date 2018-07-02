@@ -9,16 +9,24 @@ export class InfluencerService {
 
   constructor(private http: HttpClient) { }
  // baseUrl: string = 'http://localhost:8080/user-portal/users';
-  baseUrl = 'assets/sampledata/';
+  baseUrlOffline = 'assets/sampledata/';
+  baseUrl = 'http://localhost:3000/api/';
 
   getAll() {
     console.log('GETTING DATA ON SERVICE');
-    return this.http.get<Influencer[]>(this.baseUrl + 'influencers_list.json').toPromise();
+    // if(offline){
+    // return this.http.get<Influencer[]>(this.baseUrlOffline + 'influencers_list.json').toPromise();
+    // } else {
+    return this.http.get<Influencer[]>(this.baseUrl + 'influencers').toPromise();
+    // }
   }
 
   getById(id: number) {
-   // return this.http.get<Influencer>(this.baseUrl + '/' + id);
-   return this.http.get<Influencer>(this.baseUrl + 'influencer.json').toPromise();
+    // if(offline){
+    //  return this.http.get<Influencer>(this.baseUrl + 'influencer.json').toPromise();
+    // } else {
+    return this.http.get<Influencer>(this.baseUrl + 'influencers/' + id).toPromise();
+    // }
   }
 
   addInfuencer(influencer: Influencer) {
@@ -32,7 +40,7 @@ export class InfluencerService {
   updateInfluencer(influencer: Influencer) {
     // return this.http.put(this.baseUrl + '/' + user.id, user);
     console.log('THE INFLUENCER WITH ID ' + influencer.id + ' was sent to update');
-   //return null;
+   // return null;
   }
 
   deleteInfluencer(id: number) {

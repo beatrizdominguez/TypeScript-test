@@ -18,7 +18,6 @@ export class InfluencerComponent implements OnInit {
   constructor(private router: Router, private influencerService: InfluencerService) { }
 
   ngOnInit() {
-    console.log('the param is :: ' + name);
   }
 
   goToDetail(id) {
