@@ -6,6 +6,7 @@ import {configs} from "../../../configs/configs";
 import {logger} from "../utils/logger";
 import {ProductAttributes, ProductInstance} from "./interfaces/product-interface";
 import {InfluencerAttributes, InfluencerInstance} from "./interfaces/influencer-interface";
+import {SocialmediaAttributes, SocialmediaInstance} from "./interfaces/socialmedia-interface";
 import {Sequelize} from "sequelize";
 
 export interface SequelizeModels {
