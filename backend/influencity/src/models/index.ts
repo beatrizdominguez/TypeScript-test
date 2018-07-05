@@ -6,12 +6,15 @@ import {configs} from "../../../configs/configs";
 import {logger} from "../utils/logger";
 import {ProductAttributes, ProductInstance} from "./interfaces/product-interface";
 import {InfluencerAttributes, InfluencerInstance} from "./interfaces/influencer-interface";
-import {SocialmediaAttributes, SocialmediaInstance} from "./interfaces/socialmedia-interface";
+// import {InfluencerAttributes, InfluencerInstance} from "./interfaces/influencer-interface";
+//import {SocialmediaAttributes, SocialmediaInstance} from "./interfaces/socialmedia-interface";
 import {Sequelize} from "sequelize";
+import {initialdata} from "../db/initial-data";
 
 export interface SequelizeModels {
   Product: SequelizeStatic.Model<ProductInstance, ProductAttributes>;
   Influencer: SequelizeStatic.Model<InfluencerInstance, InfluencerAttributes>;
+  // Socialmedia: SequelizeStatic.Model<SocialmediaInstance, SocialmediaAttributes>;
 }
 
 class Database {
@@ -33,7 +36,7 @@ class Database {
     this._models = ({} as any);
 
     fs.readdirSync(__dirname).filter((file: string) => {
-      return (file !== this._basename) && (file !== "interfaces");
+      return (file !== this._basename) && (file !== "initial-data") && (file !== "interfaces");
     }).forEach((file: string) => {
       let model = this._sequelize.import(path.join(__dirname, file));
       this._models[(model as any).name] = model;
@@ -44,6 +47,12 @@ class Database {
         this._models[modelName].associate(this._models);
       }
     });
+
+    // load initial data on DB
+   // initialdata.createInfluencer(this._models);
+    initialdata.createMultipleInfluencers(this._models);
+    initialdata.createMultipleSocialmedias(this._models);
+
   }
 
   getModels() {

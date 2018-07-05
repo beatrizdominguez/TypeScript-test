@@ -8,7 +8,7 @@ export default function(sequelize: Sequelize, dataTypes: DataTypes):
   SequelizeStatic.Model<ProductInstance, ProductAttributes> {
   let Product = sequelize.define<ProductInstance, ProductAttributes>("Product", {
     name: {type: dataTypes.STRING, allowNull: false, primaryKey: true},
-    description: {type: dataTypes.TEXT, allowNull: true}
+    // description: {type: dataTypes.TEXT, allowNull: true}
   }, {
     indexes: [],
     classMethods: {},

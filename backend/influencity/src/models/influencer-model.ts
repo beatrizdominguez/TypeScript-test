@@ -15,8 +15,23 @@ export default function (sequelize: Sequelize, dataTypes: DataTypes):
   }, {
       indexes: [],
       classMethods: {},
-      timestamps: false
+      timestamps: true,
     });
+
+    // const influencerAttributes = {
+    //   id: 1,
+    //   name: "influencer1",
+    //   lastName: "LastName of influencer1.",
+    //   gender: "f"
+    //   // deletionDate: null
+    // };
+    // Influencer.create(influencerAttributes).then((influencer: InfluencerInstance) => {
+    //  // logger.info(`Created influencer with id ${influencerAttributes.id}.`);
+    //   // resolve(influencer);
+    // }).catch((error: Error) => {
+    //  // logger.error(error.message);
+    //  // reject(error);
+    // });
 
   return Influencer;
 }
