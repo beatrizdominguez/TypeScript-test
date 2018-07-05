@@ -27,12 +27,13 @@
   }
 
   function start() {
-    if (args.example) {
-      let options = [`./build/${args.example}/src/server.js`];
+    // if (args.example) {
+      let options = [`./build/influencity/src/server.js`];
+      // let options = [`./build/${args.example}/src/server.js`];
       spawn("node", options, {stdio: "inherit"});
-    } else {
-      plugins.util.log(`No example specified. Run: "npm start -- --example=<folder_name>"`);
-    }
+    // } else {
+    //   plugins.util.log(`No example specified. Run: "npm start -- --example=<folder_name>"`);
+    // }
   }
 
   function typings() {
