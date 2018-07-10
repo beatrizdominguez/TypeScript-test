@@ -1,10 +1,13 @@
-import {logger} from "../utils/logger";
-import {models, sequelize} from "../models/index";
-import {InfluencerAttributes, InfluencerInstance} from "../models/interfaces/influencer-interface";
-import {Transaction} from "sequelize";
+import { logger } from "../utils/logger";
+import { models, sequelize } from "../models/index";
+// import * as SequelizeStatic from "sequelize";
+import { InfluencerAttributes, InfluencerInstance } from "../models/interfaces/influencer-interface";
+import { Transaction } from "sequelize";
 
 export class InfluencerService {
+
   createInfluencer(influencerAttributes: InfluencerAttributes): Promise<InfluencerInstance> {
+
     let promise = new Promise<InfluencerInstance>((resolve: Function, reject: Function) => {
       sequelize.transaction((t: Transaction) => {
         return models.Influencer.create(influencerAttributes).then((influencer: InfluencerInstance) => {
@@ -23,7 +26,7 @@ export class InfluencerService {
   getInfluencer(id: number): Promise<InfluencerInstance> {
     let promise = new Promise<InfluencerInstance>((resolve: Function, reject: Function) => {
       sequelize.transaction((t: Transaction) => {
-        return models.Influencer.findOne({where: {id: id}}).then((influencer: InfluencerInstance) => {
+        return models.Influencer.findOne({ where: { id: id } }).then((influencer: InfluencerInstance) => {
           if (influencer) {
             logger.info(`Retrieved influencer with id ${id}.`);
           } else {
@@ -43,7 +46,15 @@ export class InfluencerService {
   listInfluencers(): Promise<Array<InfluencerInstance>> {
     let promise = new Promise<Array<InfluencerInstance>>((resolve: Function, reject: Function) => {
       sequelize.transaction((t: Transaction) => {
-        return models.Influencer.findAll().then((influencers: Array<InfluencerInstance>) => {
+        return models.Influencer.findAll(
+          {
+            where: {
+              deletionDate: {
+                $eq: null
+              }
+            }
+          }
+        ).then((influencers: Array<InfluencerInstance>) => {
           logger.info("Retrieved all influencers.");
           resolve(influencers);
         }).catch((error: Error) => {
@@ -57,40 +68,33 @@ export class InfluencerService {
   }
 
   updateInfluencer(id: number, influencerAttributes: any): Promise<void> {
-    let promise = new Promise<void>((resolve: Function, reject: Function) => {
-      sequelize.transaction((t: Transaction) => {
-        return models.Influencer.update(influencerAttributes, {where: {id: id}})
-          .then((results: [number, Array<InfluencerInstance>]) => {
-          if (results.length > 0) {
-            logger.info(`Updated influencer with id ${id}.`);
-          } else {
-            logger.info(`Influencer with id ${id} does not exist.`);
-          }
-          resolve(null);
-        }).catch((error: Error) => {
-          logger.error(error.message);
-          reject(error);
-        });
-      });
-    });
-
-    return promise;
+    return this.updateValues(id, influencerAttributes);
   }
 
   deleteInfluencer(id: number): Promise<void> {
+
+    let influencerAttributes = {
+      deletionDate: new Date()
+    };
+    return this.updateValues(id, influencerAttributes);
+  }
+
+  private updateValues(id: number, influencerAttributes: any) {
+
     let promise = new Promise<void>((resolve: Function, reject: Function) => {
       sequelize.transaction((t: Transaction) => {
-        return models.Influencer.destroy({where: {id: id}}).then((afffectedRows: number) => {
-          if (afffectedRows > 0) {
-            logger.info(`Deleted influencer with id ${id}`);
-          } else {
-            logger.info(`Influencer with id ${id} does not exist.`);
-          }
-          resolve(null);
-        }).catch((error: Error) => {
-          logger.error(error.message);
-          reject(error);
-        });
+        return models.Influencer.update(influencerAttributes, { where: { id: id } })
+          .then((results: [number, Array<InfluencerInstance>]) => {
+            if (results.length > 0) {
+              logger.info(`Updated influencer with id ${id}.`);
+            } else {
+              logger.info(`Influencer with id ${id} does not exist.`);
+            }
+            resolve(null);
+          }).catch((error: Error) => {
+            logger.error(error.message);
+            reject(error);
+          });
       });
     });
 

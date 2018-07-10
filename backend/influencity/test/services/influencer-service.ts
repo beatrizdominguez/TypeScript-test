@@ -12,8 +12,8 @@ describe("InfluencerService", () => {
     id: 1,
     name: "influencer1",
     lastName: "LastName of influencer1.",
-    gender: "f"
-    // deletionDate: null
+    gender: "f",
+    deletionDate: null
   };
 
   describe("#createInfluencer", () => {

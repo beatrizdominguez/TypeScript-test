@@ -5,7 +5,7 @@ export interface InfluencerAttributes {
   name: string;
   lastName: string;
   gender: string;
-  // deletionDate: Date;
+  deletionDate: Date;
 }
 
 export interface InfluencerInstance extends Instance<InfluencerAttributes> {
